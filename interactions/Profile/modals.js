@@ -1,6 +1,7 @@
 const { ModalBuilder, ActionRowBuilder, TextInputBuilder, TextInputStyle } = require('discord.js');
 
-module.exports = async () => {
+// Fonction pour créer un modal de profil
+function createProfileModal() {
   const modal = new ModalBuilder()
     .setCustomId('create-profile-modal')
     .setTitle('Créer un profil');
@@ -37,4 +38,9 @@ module.exports = async () => {
   );
 
   return modal;
+}
+
+// Exporter la fonction
+module.exports = {
+  createProfileModal,
 };

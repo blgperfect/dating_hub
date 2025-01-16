@@ -172,6 +172,7 @@ module.exports = async (_client, interaction) => {
           });
         }
       }
+ 
 
       case 'profile-activate-cancel': {
         await interaction.deferReply({ ephemeral: true });
