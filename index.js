@@ -55,7 +55,6 @@ client.once('ready', async () => {
     }
 });
 
-// Gestion des interactions
 client.on('interactionCreate', async (interaction) => {
     if (interaction.isChatInputCommand()) {
         const command = commands.find(cmd => cmd.data.name === interaction.commandName);
@@ -77,7 +76,12 @@ client.on('interactionCreate', async (interaction) => {
                 const interactionFiles = getAllFiles(subFolder, "files", true);
                 for (const eventFile of interactionFiles) {
                     const eventFunction = require(eventFile);
-                    await eventFunction(client, interaction);
+
+                    if (typeof eventFunction === 'function') {
+                        await eventFunction(client, interaction);
+                    } else {
+                        console.warn(`⚠️ Le fichier "${eventFile}" n'a pas exporté une fonction valide.`);
+                    }
                 }
             }
         } catch (error) {
@@ -85,6 +89,7 @@ client.on('interactionCreate', async (interaction) => {
         }
     }
 });
+
 
 // Gestion des réactions (likes)
 client.on('messageReactionAdd', async (reaction, user) => {
