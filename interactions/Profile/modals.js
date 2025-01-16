@@ -1,4 +1,10 @@
-const { ModalBuilder, ActionRowBuilder, TextInputBuilder, TextInputStyle } = require('discord.js');
+const { ModalBuilder, ActionRowBuilder, TextInputBuilder, TextInputStyle, ModalSubmitInteraction} = require('discord.js');
+
+/**
+ * @param {Client} client
+ * @param {ModalSubmitInteraction} interaction
+ */
+
 
 module.exports = {
   createProfileModal: () => {

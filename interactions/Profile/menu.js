@@ -1,4 +1,4 @@
-const { Client, StringSelectMenuInteraction } = require("discord.js")
+const { Client, StringSelectMenuInteraction } = require('discord.js');
 const RoleManager = require('../../utils/roleManager');
 
 /**
