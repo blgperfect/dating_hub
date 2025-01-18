@@ -6,8 +6,7 @@ const path = require('path');
 const { Client, GatewayIntentBits, REST, Routes } = require('discord.js');
 const connectDB = require('./database/connect');
 const commands = require('./commands');
-const getAllFiles = require('./utils/getAllFiles');
-const likeManager = require('./utils/likeManager');
+const getAllFiles = require('./interactions/getAllFiles'); // Assurez-vous que le chemin est correct
 
 // Initialisation du client Discord
 const client = new Client({
@@ -91,15 +90,6 @@ client.on('interactionCreate', async (interaction) => {
 });
 
 
-// Gestion des réactions (likes)
-client.on('messageReactionAdd', async (reaction, user) => {
-    if (user.bot) return;
-    try {
-        await likeManager.handleLikeReaction(reaction, user);
-    } catch (error) {
-        console.error(chalk.red('❌ Erreur lors de la gestion des réactions :', error));
-    }
-});
 
 // Gestion des erreurs
 process.on('unhandledRejection', (error) => {
